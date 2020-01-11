@@ -1,0 +1,24 @@
+<div class="outer">
+  <div class="table">
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="car-list">List cars</a>
+        </li>
+        <li>
+          <a routerLink="car-form">Create car</a>
+        </li>
+        <li>
+          <a routerLink="manufacturer-list">List Manufacturer</a>
+        </li>
+        <li>
+          <a routerLink="manufacturer-form">Create Manufacturer</a>
+        </li>
+        <li>
+          <app-logout *ngIf="isLoggedIn"></app-logout>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>

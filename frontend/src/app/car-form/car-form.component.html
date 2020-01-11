@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <h1>Register new Car</h1>
+  <form [formGroup]="carFormGroup" class="car-form" >
+    <mat-form-field>
+      <input matInput type="text" placeholder="Model" formControlName="model" [required]="true">
+      <mat-hint align="end">Car Model</mat-hint>
+      <mat-error *ngIf="carFormGroup.controls.model.hasError('required')">Model is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Manufacturer"
+                  formControlName="manufacturer">
+        <mat-option [value]="manufacturerOption.id" *ngFor="let
+manufacturerOption of manufacturerOptions">{{manufacturerOption.name}}</mat-option>
+      </mat-select>
+      <mat-hint align="end">The manufacturer of the car</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="color" formControlName="color" [required]="true"></textarea>
+      <mat-hint align="end">The color of the car</mat-hint>
+      <mat-error *ngIf="carFormGroup.controls.color.hasError('required')">Color is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Price" formControlName="price">
+      <mat-hint align="end">The price of the car</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="condition" formControlName="condition">
+        <mat-option [value]="condition.key"
+                    *ngFor="let condition of conditionService.conditionNames | keyvalue">{{condition.value}}</mat-option>
+      </mat-select>
+      <mat-hint align="end">The condition of the car</mat-hint>
+    </mat-form-field>
+    <mat-checkbox formControlName="used">Used</mat-checkbox>
+    <br/>
+    <mat-form-field>
+      <mat-select placeholder="Top Sellers"
+                  formControlName="Country_mostSales" multiple>
+        <mat-option [value]="countryOption.id" *ngFor="let
+countryOption of countryOptions">{{countryOption.name}}</mat-option>
+      </mat-select>
+      <mat-hint align="end">The manufacturer of the car</mat-hint>
+    </mat-form-field>
+    <mat-card-actions align="center">
+      <button class="btn btn-warning-outline" [disabled]="!carFormGroup.valid" (click)="createCar()">
+        <span *ngIf="!carFormGroup.controls.id.value">Create</span>
+        <span *ngIf="carFormGroup.controls.id.value">Update</span>
+      </button>
+    </mat-card-actions>
+  </form>
+</div>
